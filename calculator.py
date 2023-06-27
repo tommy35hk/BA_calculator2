@@ -113,8 +113,7 @@ class BonusEntry:
             reward = cur.execute(
                 "SELECT reward "
                 "FROM Missions "
-                "WHERE item_ID = %i "
-                "ORDER BY name" % item_ID
+                "WHERE item_ID = %i "% item_ID
             )
             reward = [item[0] for item in reward]
             self.rewards.append(reward)
@@ -125,6 +124,7 @@ class BonusEntry:
         self.rewards = np.array(self.rewards)
         final_reward = np.array([(1 + bonus) * reward for bonus, reward in zip(self.bonus, self.rewards)])
         final_reward = np.ceil(final_reward)
+        print(final_reward)
 
 
 class EventFrame:
